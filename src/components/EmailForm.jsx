@@ -5,17 +5,17 @@ function EmailForm() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [page, setPage] = useState(1); // ✅ Track current page
-  const [totalPages, setTotalPages] = useState(1); // ✅ Track total pages
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const USERS_PER_PAGE = 3; // ✅ Number of users per page
+  const USERS_PER_PAGE = 3;
 
   async function fetchUsers(currentPage) {
     setLoading(true);
     setError('');
 
     try {
-      // ✅ Simulate pagination using _limit and _page (JSONPlaceholder supports it)
+      // Simulate pagination using _limit and _page (JSONPlaceholder supports it)
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/users?_limit=${USERS_PER_PAGE}&_page=${currentPage}`
       );
@@ -23,7 +23,7 @@ function EmailForm() {
       if (!response.ok) throw new Error('Network error');
       const data = await response.json();
       
-      setUsers(data); // ✅ Update users state
+      setUsers(data);
 
       // JSONPlaceholder does not return total pages, so we assume 10 users in total.
       setTotalPages(Math.ceil(10 / USERS_PER_PAGE)); 
@@ -41,7 +41,7 @@ function EmailForm() {
     fetchUsers(page); // ✅ Fetch users on form submit
   }
 
-  // ✅ Fetch new users when page changes
+  // new users when page changes
   useEffect(() => {
     fetchUsers(page);
   }, [page]);
