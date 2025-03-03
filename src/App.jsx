@@ -5,7 +5,7 @@ import './index.css';
 
 const App = () => {
   return (
-    <div className="p-5">
+    <div>
       <Header />
       <Hero />
     </div>
