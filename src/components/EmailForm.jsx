@@ -38,23 +38,26 @@ function EmailForm() {
   function handleSignup(evt) {
     evt.preventDefault();
     console.log('handle signup with:', email);
-    fetchUsers(page); // ✅ Fetch users on form submit
+    fetchUsers(page);
   }
 
   // new users when page changes
-  useEffect(() => {
-    fetchUsers(page);
-  }, [page]);
+  // useEffect(() => {
+  //   fetchUsers(page);
+  // }, [page]);
 
   return (
     <form onSubmit={handleSignup}>
       <input
         type="email"
+        className="bg-gray-200 p-2 border"
         placeholder="Enter Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button type="submit">Subscribe</button>
+      <button 
+      className="border p-2 text-white bg-blue-400 hover:bg-blue-500"
+      type="submit">Subscribe</button>
 
       {loading && <p>Loading users...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
