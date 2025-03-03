@@ -17,6 +17,14 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',       // Inject CSS into the DOM
+          'css-loader',         // Handles CSS imports
+          'postcss-loader',     // Processes the CSS with PostCSS (Tailwind)
+        ],
+      }
     ],
   },
   resolve: {
